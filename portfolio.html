@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" class="page-portfolio">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#050305" />
+    <meta name="description" content="Portfolio — Chris Kevin, AI Engineer." />
+    <title>Portfolio — Chris Kevin</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="page-portfolio">
+    <header class="topbar">
+      <a class="topbar__mark" href="./" aria-label="Chris Kevin, home">CK<sup>©26</sup></a>
+      <div class="topbar__right">
+        <button class="sound-btn" type="button" aria-pressed="false" aria-label="Music">
+          <span class="sound-btn__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="sound-btn__label">Sound</span>
+        </button>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+          <span class="menu-btn__label">Menu</span>
+          <span class="menu-btn__plus" aria-hidden="true"></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="work">
+      <header class="work__head">
+        <p class="page-label"><b>03</b> / Portfolio</p>
+        <h1 class="work__title"><span class="work__title-bold">Selected</span> <em>work</em></h1>
+        <p class="work__count">01 project · more soon</p>
+      </header>
+
+      <article class="project">
+        <!-- The reel itself, looping. The source file is a phone screen recording;
+             only the reel's own frame is shown (see .screen__video / .screen__patch). -->
+        <figure class="screen">
+          <div class="screen__frame">
+            <video
+              class="screen__video"
+              src="videos/buggin-reel.mp4"
+              width="580"
+              height="1280"
+              muted
+              loop
+              playsinline
+              autoplay
+              preload="auto"
+              disablepictureinpicture
+              aria-label="Baby, you buggin'? — the reel, playing on a loop in time with the site music"
+            ></video>
+            <!-- white patches over each Instagram button (source-pixel boxes) -->
+            <span class="screen__patch" style="--x0: 509; --x1: 561; --y0: 497; --y1: 542" aria-hidden="true"></span>
+            <span class="screen__patch" style="--x0: 507; --x1: 562; --y0: 568; --y1: 620" aria-hidden="true"></span>
+            <span class="screen__patch" style="--x0: 519; --x1: 553; --y0: 630; --y1: 651" aria-hidden="true"></span>
+            <span class="screen__patch" style="--x0: 508; --x1: 559; --y0: 673; --y1: 723" aria-hidden="true"></span>
+            <span class="screen__patch" style="--x0: 519; --x1: 547; --y0: 733; --y1: 753" aria-hidden="true"></span>
+            <span class="screen__patch" style="--x0: 500; --x1: 580; --y0: 775; --y1: 802" aria-hidden="true"></span>
+            <span class="screen__progress" aria-hidden="true"><i></i></span>
+          </div>
+          <figcaption class="screen__side">
+            <span class="screen__live"><i></i>Now playing · on loop</span>
+            <span class="screen__title">Baby, you <em>buggin'?</em></span>
+            <span class="screen__time"><b class="screen__now">0:00</b> / 0:24 · <span class="screen__sound">sound off</span></span>
+            <button class="screen__toggle" type="button" aria-pressed="false">
+              <svg class="screen__icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" /></svg>
+              <svg class="screen__icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+              <span class="screen__toggle-label">Pause</span>
+            </button>
+          </figcaption>
+        </figure>
+
+        <div class="project__media">
+          <div class="cover-scene">
+            <button class="cover js-play" type="button" aria-label="Play the reel: Baby, you buggin'?">
+              <span class="cover__inner">
+                <span class="cover__bg" aria-hidden="true"></span>
+                <span class="cover__rays" aria-hidden="true"></span>
+                <span class="cover__dots" aria-hidden="true"></span>
+
+                <span class="cover__badge" aria-hidden="true"><i></i>Reel</span>
+                <span class="cover__no" aria-hidden="true">01</span>
+
+                <span class="cover__title" aria-hidden="true">
+                  <span class="cover__you">Baby, you</span>
+                  <span class="cover__buggin">BUGGIN<span class="cover__q">?</span></span>
+                </span>
+
+                <img class="cover__person" src="images/friend-about.png" alt="" width="923" height="1149" />
+
+                <svg class="cover__sticker" viewBox="-110 -80 220 160" aria-hidden="true">
+                  <path class="cover__sticker-burst" d="" />
+                  <text x="0" y="-12" text-anchor="middle" dominant-baseline="central">BU BU!</text>
+                </svg>
+
+                <svg class="cover__arrow" viewBox="0 0 120 120" aria-hidden="true">
+                  <path d="M14 18 C 52 8, 92 30, 96 82" />
+                  <path d="M78 70 L 97 86 L 108 62" />
+                </svg>
+
+                <span class="cover__spark cover__spark--a" aria-hidden="true">✦</span>
+                <span class="cover__spark cover__spark--b" aria-hidden="true">✦</span>
+                <span class="cover__spark cover__spark--c" aria-hidden="true">✦</span>
+
+                <span class="cover__foot" aria-hidden="true">
+                  <span class="cover__play"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" /></svg></span>
+                  <span class="cover__event">NYP × Alibaba Cloud<br />Hackathon</span>
+                </span>
+                <span class="cover__glare" aria-hidden="true"></span>
+              </span>
+            </button>
+            <p class="media-cap">Cover</p>
+          </div>
+        </div>
+
+        <div class="project__info">
+          <p class="project__num"><span>01</span> Instagram Reel</p>
+          <h2 class="project__title">Baby, you <em>buggin'?</em></h2>
+          <p class="project__desc">
+            A short promo reel for the NYP × Alibaba Cloud Hackathon, posted by @nyp_cloud on Instagram.
+          </p>
+          <dl class="project__facts">
+            <div>
+              <dt>Format</dt>
+              <dd>Instagram Reel</dd>
+            </div>
+            <div>
+              <dt>Posted by</dt>
+              <dd>@nyp_cloud</dd>
+            </div>
+            <div>
+              <dt>Event</dt>
+              <dd>NYP × Alibaba Cloud Hackathon</dd>
+            </div>
+          </dl>
+          <div class="project__actions">
+            <button class="btn btn--primary js-play" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+              Play the reel
+            </button>
+            <a class="btn btn--ghost" href="https://www.instagram.com/reel/DfdhwiKpitK/" target="_blank" rel="noopener noreferrer">Open on Instagram <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <dialog class="player" aria-label="Reel player">
+      <button class="player__close" type="button" aria-label="Close player"><span></span></button>
+      <div class="player__frame">
+        <iframe title="Baby, you buggin'? — Instagram reel" loading="lazy" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </dialog>
+
+    <nav class="menu" id="menu" aria-hidden="true">
+      <ul class="menu__list">
+        <li><a class="menu__link" href="./"><span class="menu__num">01</span><span class="menu__text">Home</span></a></li>
+        <li><a class="menu__link" href="about.html"><span class="menu__num">02</span><span class="menu__text"><em>About</em></span></a></li>
+        <li><a class="menu__link" href="portfolio.html" aria-current="page"><span class="menu__num">03</span><span class="menu__text">Portfolio</span></a></li>
+      </ul>
+      <p class="menu__foot">Chris Kevin — AI Engineer</p>
+    </nav>
+
+    <div class="curtain" aria-hidden="true"><span class="curtain__word">BU · BU · BUGGIN</span></div>
+
+    <script type="module" src="/src/portfolio.js"></script>
+  </body>
+</html>

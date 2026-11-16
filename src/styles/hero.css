@@ -1,0 +1,293 @@
+/* Home / hero page */
+html.page-home,
+html.page-home body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---------- Canvas ---------- */
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: block;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* ---------- Loader ---------- */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 22px;
+  background: var(--bg);
+  transition: opacity 0.6s ease, visibility 0.6s;
+}
+body:not(.is-loading) .loader {
+  opacity: 0;
+  visibility: hidden;
+}
+.loader__ring {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-faint);
+  position: relative;
+  animation: spin 1.6s linear infinite;
+}
+.loader__ring::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 12px var(--ember), 0 0 24px var(--ember);
+}
+.loader__label {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--ink-dim);
+}
+.loader__pct {
+  color: var(--sun);
+  font-variant-numeric: tabular-nums;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Hero typography ---------- */
+.hero {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+.hero__name,
+.hero__role {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-weight: 400;
+  line-height: 0.86;
+  text-shadow: 0 0 40px rgba(255, 110, 40, 0.28);
+}
+/* soft shade behind the type so it stays readable over the orbiting letters */
+.hero__name::before,
+.hero__role::before {
+  content: '';
+  position: absolute;
+  inset: -35% -28%;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(5, 3, 5, 0.5), rgba(5, 3, 5, 0));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.hero.type-in .hero__name::before,
+.hero.type-in .hero__role::before {
+  opacity: 1;
+}
+.hero__name {
+  left: var(--gutter);
+  top: 17vh;
+}
+.hero__role {
+  right: var(--gutter);
+  bottom: 13vh;
+  align-items: flex-end;
+  text-align: right;
+}
+.word {
+  display: block;
+  white-space: nowrap;
+}
+.word--bold {
+  font-family: var(--font-bold);
+  font-size: clamp(46px, 7.4vw, 148px);
+  letter-spacing: -0.015em;
+}
+.word--serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(44px, 7vw, 142px);
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  margin-top: 0.04em;
+}
+
+/* Split-letter masks */
+.word .mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.04em 0.08em 0.1em 0;
+  margin-right: -0.08em;
+}
+.word .char {
+  display: inline-block;
+  will-change: transform;
+  transform-origin: 50% 100%;
+}
+
+/* Beat reactions (classes toggled from JS) */
+.hero.beat-bu .word--bold .char {
+  animation: bu-pop 0.42s var(--ease-out);
+}
+.hero.beat-buggin .char {
+  animation: buggin-glitch 0.5s steps(2, end);
+}
+@keyframes bu-pop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-0.06em) scale(1.06);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes buggin-glitch {
+  0% {
+    transform: translate(0, 0) skewX(0);
+    text-shadow: 3px 0 rgba(255, 40, 30, 0.9), -3px 0 rgba(60, 200, 255, 0.8);
+  }
+  20% {
+    transform: translate(-4px, 1px) skewX(-8deg);
+  }
+  40% {
+    transform: translate(3px, -2px) skewX(6deg);
+    text-shadow: -4px 0 rgba(255, 40, 30, 0.9), 4px 0 rgba(60, 200, 255, 0.8);
+  }
+  60% {
+    transform: translate(-2px, 0) skewX(-3deg);
+  }
+  100% {
+    transform: translate(0, 0) skewX(0);
+    text-shadow: 0 0 40px rgba(255, 110, 40, 0.28);
+  }
+}
+
+/* Small UI */
+.hero__hint,
+.hero__meta {
+  position: absolute;
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.hero__hint {
+  left: var(--gutter);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 26px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero__hint-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 10px var(--ember);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+.hero__meta {
+  left: var(--gutter);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 50px);
+  color: var(--ink-faint);
+}
+.hero__meta-num {
+  color: var(--ink-dim);
+}
+.hero__beat {
+  color: var(--ink-dim);
+  transition: color 0.2s;
+}
+.hero.beat-buggin .hero__beat {
+  color: var(--sun);
+}
+@keyframes pulse {
+  50% {
+    transform: scale(1.7);
+    opacity: 0.55;
+  }
+}
+
+.skip {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+  transform: translateX(-50%);
+  z-index: 35;
+  padding: 10px 16px;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  border: 1px solid var(--ink-faint);
+  border-radius: 999px;
+  pointer-events: auto;
+  transition: color 0.3s, border-color 0.3s, opacity 0.5s;
+}
+.skip:hover {
+  color: var(--ink);
+  border-color: var(--ink-dim);
+}
+body.intro-done .skip {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Pre-intro states (GSAP brings them in) */
+.page-home .hero__hint,
+.page-home .hero__meta,
+.page-home .topbar {
+  opacity: 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 760px) {
+  .hero__name {
+    top: calc(env(safe-area-inset-top, 0px) + 84px);
+  }
+  .hero__role {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 96px);
+  }
+  .word--bold {
+    font-size: clamp(42px, 15vw, 96px);
+  }
+  .word--serif {
+    font-size: clamp(40px, 14vw, 92px);
+  }
+  .hero__meta {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero.beat-bu .word--bold .char,
+  .hero.beat-buggin .char {
+    animation: none;
+  }
+  .loader__ring,
+  .hero__hint-dot {
+    animation: none;
+  }
+}
